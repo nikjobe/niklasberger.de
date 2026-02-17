@@ -1,197 +1,1438 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niklas Berger</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niklas Joel Berger – Wissenschaftlicher Mitarbeiter & Doktorand</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="64x64" href="favicon-64x64.png">
+<style>
+/* Local Font Declarations */
+@font-face {
+font-family: 'IBM Plex Mono';
+src: url('fonts/IBMPlexMono-Light.ttf') format('truetype');
+font-weight: 300;
+font-style: normal;
+font-display: swap;
+}
 
-        body {
-            background: #ffffff;
-            color: #000000;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            font-size: 18px;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 40px;
-        }
+@font-face {
+font-family: 'IBM Plex Mono';
+src: url('fonts/IBMPlexMono-Regular.ttf') format('truetype');
+font-weight: 400;
+font-style: normal;
+font-display: swap;
+}
 
-        .container {
-            max-width: 600px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 0.3s forwards;
-        }
+@font-face {
+font-family: 'IBM Plex Mono';
+src: url('fonts/IBMPlexMono-SemiBold.ttf') format('truetype');
+font-weight: 600;
+font-style: normal;
+font-display: swap;
+}
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
+@font-face {
+font-family: 'Crimson Pro';
+src: url('fonts/CrimsonPro-Light.ttf') format('truetype');
+font-weight: 300;
+font-style: normal;
+font-display: swap;
+}
 
-        h1 {
-            font-size: 32px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
+@font-face {
+font-family: 'Crimson Pro';
+src: url('fonts/CrimsonPro-Regular.ttf') format('truetype');
+font-weight: 400;
+font-style: normal;
+font-display: swap;
+}
 
-        .subtitle {
-            font-size: 16px;
-            opacity: 0.6;
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
+@font-face {
+font-family: 'Crimson Pro';
+src: url('fonts/CrimsonPro-SemiBold.ttf') format('truetype');
+font-weight: 600;
+font-style: normal;
+font-display: swap;
+}
 
-        .subtitle a {
-            color: #000000;
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
+:root {
+--bg: #ffffff;
+--text: #000000;
+--line: #000000;
+--accent: #000000;
+--divider-light: rgba(0, 0, 0, 0.1);
+}
 
-        .subtitle a:hover {
-            opacity: 1;
-        }
+@media (prefers-color-scheme: dark) {
+:root {
+--bg: #1A1A1A;
+--text: #E8E8E8;
+--line: #404040;
+--accent: #E8E8E8;
+--divider-light: rgba(255, 255, 255, 0.1);
+}
+}
 
-        .message {
-            font-size: 19px;
-            line-height: 1.7;
-            margin-bottom: 48px;
-            opacity: 0.8;
-        }
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-        .contact {
-            border-top: 1px solid #000000;
-            padding-top: 32px;
-        }
+body {
+background: var(--bg);
+color: var(--text);
+font-family: 'Crimson Pro', serif;
+font-size: 18px;
+line-height: 1.6;
+font-weight: 300;
+-webkit-font-smoothing: antialiased;
+}
 
-        .contact-item {
-            margin-bottom: 16px;
-        }
+/* Monospace font for headers */
+h1, h2, .subtitle, .timeline-year, .publication-year, .contact-label, footer, .language-switcher {
+font-family: 'IBM Plex Mono', monospace;
+}
 
-        .contact-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.5;
-            margin-bottom: 4px;
-        }
+.container {
+max-width: 800px;
+margin: 0 auto;
+padding: 80px 40px;
+opacity: 0;
+animation: fadeIn 0.8s ease-out 0.2s forwards;
+}
 
-        .contact-value {
-            font-size: 17px;
-        }
+@keyframes fadeIn {
+to {
+opacity: 1;
+}
+}
 
-        .contact-value a {
-            color: #000000;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s ease;
-        }
+.language-switcher {
+position: fixed;
+top: 40px;
+right: 40px;
+display: flex;
+flex-direction: column;
+gap: 12px;
+font-family: 'IBM Plex Mono', monospace;
+font-size: 12px;
+letter-spacing: 0.05em;
+opacity: 0;
+animation: fadeIn 0.8s ease-out 0.3s forwards;
+z-index: 100;
+}
 
-        .contact-value a:hover {
-            border-bottom-color: #000000;
-        }
+.language-buttons {
+display: flex;
+gap: 12px;
+}
 
-        footer {
-            margin-top: 40px;
-            padding-top: 32px;
-            border-top: 1px solid #000000;
-            text-align: center;
-            opacity: 0.4;
-            font-size: 12px;
-        }
+.language-switcher button {
+background: none;
+border: none;
+color: var(--text);
+cursor: pointer;
+padding: 0;
+font-family: inherit;
+font-size: inherit;
+letter-spacing: inherit;
+opacity: 0.4;
+transition: all 0.3s ease;
+text-transform: uppercase;
+position: relative;
+}
 
-        @media (max-width: 768px) {
-            body {
-                padding: 24px;
-            }
+.language-switcher button::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -4px;
+left: 50%;
+transform: translateX(-50%);
+background-color: var(--text);
+transition: width 0.3s ease;
+}
 
-            h1 {
-                font-size: 26px;
-            }
+.language-switcher button:hover {
+opacity: 0.7;
+transform: translateY(-1px);
+}
 
-            .message {
-                font-size: 17px;
-            }
-        }
+.language-switcher button.active {
+opacity: 1;
+font-weight: 600;
+}
 
-        ::selection {
-            background: #000000;
-            color: #ffffff;
-        }
+.language-switcher button.active::after {
+width: 100%;
+}
 
-        /* Email spam protection */
-        .email-protected {
-            unicode-bidi: bidi-override;
-            direction: rtl;
-        }
-    </style>
+.language-switcher .separator {
+opacity: 0.3;
+}
+
+/* Sticky Navigation */
+.sticky-nav {
+display: flex;
+flex-direction: column;
+gap: 8px;
+margin-top: 20px;
+padding-top: 20px;
+border-top: 1px solid var(--line);
+}
+
+.sticky-nav a {
+font-family: 'IBM Plex Mono', monospace;
+font-size: 11px;
+letter-spacing: 0.05em;
+text-transform: uppercase;
+color: var(--text);
+text-decoration: none;
+opacity: 0.4;
+transition: all 0.3s ease;
+position: relative;
+padding-left: 12px;
+}
+
+.sticky-nav a::before {
+content: '';
+position: absolute;
+left: 0;
+top: 50%;
+transform: translateY(-50%);
+width: 0;
+height: 2px;
+background-color: var(--text);
+transition: width 0.3s ease;
+}
+
+.sticky-nav a:hover {
+opacity: 0.7;
+transform: translateX(4px);
+}
+
+.sticky-nav a:hover::before {
+width: 6px;
+}
+
+.sticky-nav a.active {
+opacity: 1;
+font-size: 12px;
+}
+
+.sticky-nav a.active::before {
+width: 8px;
+}
+
+header {
+border-bottom: 1px solid var(--line);
+padding-bottom: 40px;
+margin-bottom: 80px;
+animation: slideDown 0.6s ease-out 0.4s backwards;
+}
+
+/* Navigation removed from header - now in sticky sidebar */
+
+@keyframes slideDown {
+from {
+transform: translateY(-20px);
+opacity: 0;
+}
+}
+
+h1 {
+font-family: 'IBM Plex Mono', monospace;
+font-size: 32px;
+font-weight: 600;
+letter-spacing: -0.02em;
+margin-bottom: 12px;
+line-height: 1.2;
+}
+
+.subtitle {
+font-family: 'IBM Plex Mono', monospace;
+font-size: 14px;
+font-weight: 300;
+letter-spacing: 0.05em;
+opacity: 0.6;
+}
+
+.subtitle a {
+    color: inherit; /* Erbt die Farbe vom Subtitle */
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    transition: opacity 0.2s ease;
+    opacity: 1; /* Links sollen gut sichtbar sein */
+}
+
+.subtitle a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px; /* Die Linie ist 1px dick */
+    bottom: -2px; /* Abstand zum Text */
+    left: 0;
+    background-color: var(--text); /* Nimmt die Textfarbe (Schwarz/Weiß) */
+    transition: width 0.3s ease-out; /* Die Animation */
+}
+
+.subtitle a:hover::after {
+    width: 100%;
+}
+
+section {
+margin-bottom: 80px;
+animation: slideUp 0.6s ease-out backwards;
+}
+
+section:nth-child(2) { animation-delay: 0.5s; }
+section:nth-child(3) { animation-delay: 0.6s; }
+section:nth-child(4) { animation-delay: 0.7s; }
+section:nth-child(5) { animation-delay: 0.8s; }
+section:nth-child(6) { animation-delay: 0.9s; }
+section:nth-child(7) { animation-delay: 1.0s; }
+
+@keyframes slideUp {
+from {
+transform: translateY(30px);
+opacity: 0;
+}
+}
+
+h2 {
+font-family: 'IBM Plex Mono', monospace;
+font-size: 12px;
+font-weight: 400;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+margin-bottom: 32px;
+opacity: 0.5;
+}
+
+.bio {
+font-size: 21px;
+line-height: 1.7;
+margin-bottom: 24px;
+}
+
+.timeline {
+border-left: 1px solid var(--line);
+padding-left: 32px;
+margin-left: 8px;
+}
+
+.timeline-item {
+margin-bottom: 40px;
+position: relative;
+transition: transform 0.2s ease;
+cursor: default;
+transform-origin: left center;
+}
+
+.timeline-item:hover {
+transform: scale(1.02);
+}
+
+.timeline-item::before {
+content: '';
+position: absolute;
+left: -37px;
+top: 8px;
+width: 9px;
+height: 9px;
+background: var(--accent);
+border-radius: 50%;
+transition: transform 0.2s ease;
+}
+
+.timeline-item:hover::before {
+transform: scale(1.2);
+}
+
+.timeline-year {
+font-family: 'IBM Plex Mono', monospace;
+font-size: 13px;
+font-weight: 400;
+margin-bottom: 8px;
+opacity: 0.6;
+}
+
+.timeline-title {
+font-weight: 600;
+font-size: 19px;
+margin-bottom: 4px;
+line-height: 1.4;
+}
+
+.timeline-institution {
+font-size: 17px;
+opacity: 0.7;
+margin-bottom: 8px;
+}
+
+.timeline-institution a {
+color: inherit;
+text-decoration: none;
+position: relative;
+display: inline-block;
+}
+
+.timeline-institution a::after {
+content: '';
+position: absolute;
+width: 0;
+height: 1px;
+bottom: -2px;
+left: 0;
+background-color: var(--text);
+transition: width 0.3s ease-out;
+}
+
+.timeline-institution a:hover::after {
+width: 100%;
+}
+
+.timeline-description {
+font-size: 16px;
+opacity: 0.8;
+line-height: 1.6;
+}
+
+.publications-list {
+list-style: none;
+}
+
+.publication-authors {
+font-size: 16px;
+margin-bottom: 6px;
+opacity: 0.7;
+line-height: 1.5;
+}
+
+.contributor-role {
+font-size: 13px;
+font-style: italic;
+opacity: 0.8;
+}
+
+.publication-title {
+font-weight: 600;
+font-size: 18px;
+margin-bottom: 6px;
+line-height: 1.4;
+}
+
+.publication-title a {
+color: var(--text);
+text-decoration: none;
+position: relative;
+display: inline-block;
+}
+
+.publication-title a::after {
+content: '';
+position: absolute;
+width: 0;
+height: 1px;
+bottom: -2px;
+left: 0;
+background-color: var(--text);
+transition: width 0.3s ease-out;
+}
+
+.publication-title a:hover::after {
+width: 100%;
+}
+
+.publication-venue {
+font-size: 15px;
+font-style: italic;
+opacity: 0.6;
+}
+
+.publication-year {
+font-family: 'IBM Plex Mono', monospace;
+font-size: 13px;
+margin-top: 4px;
+opacity: 0.5;
+}
+
+.publication-doi {
+font-size: 14px;
+margin-top: 6px;
+}
+
+.publication-doi a {
+color: var(--text);
+text-decoration: none;
+border-bottom: 1px solid transparent;
+transition: border-color 0.2s ease;
+opacity: 0.6;
+}
+
+.publication-doi a:hover {
+border-bottom-color: var(--text);
+opacity: 1;
+}
+
+.publication-placeholder {
+font-size: 16px;
+opacity: 0.5;
+font-style: italic;
+padding: 24px 0;
+}
+
+.loading {
+font-size: 16px;
+opacity: 0.5;
+font-style: italic;
+padding: 24px 0;
+animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+0%, 100% { opacity: 0.5; }
+50% { opacity: 0.3; }
+}
+
+.error-message {
+font-size: 16px;
+opacity: 0.6;
+padding: 24px 0;
+color: #666;
+}
+
+.contact-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 32px 40px;
+}
+
+.contact-item {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.contact-label {
+font-family: 'IBM Plex Mono', monospace;
+font-size: 11px;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+opacity: 0.5;
+}
+
+.contact-value {
+font-size: 17px;
+}
+
+.contact-value a {
+color: var(--text);
+text-decoration: none;
+position: relative;
+display: inline-block;
+}
+
+.contact-value a::after {
+content: '';
+position: absolute;
+width: 0;
+height: 1px;
+bottom: -2px;
+left: 0;
+background-color: var(--text);
+transition: width 0.3s ease-out;
+}
+
+.contact-value a:hover::after {
+width: 100%;
+}
+
+/* Email spam protection - simple obfuscation */
+.email-protected {
+/* Email displays normally now */
+}
+
+footer {
+margin-top: 60px;
+padding-top: 20px;
+border-top: 1px solid var(--line);
+text-align: center;
+opacity: 0.4;
+font-family: 'IBM Plex Mono', monospace;
+font-size: 12px;
+}
+
+@media (max-width: 768px) {
+.container {
+padding: 60px 24px;
+}
+
+.language-switcher {
+top: 24px;
+right: 24px;
+}
+
+.sticky-nav {
+display: none;
+}
+
+h1 {
+font-size: 26px;
+}
+
+.bio {
+font-size: 19px;
+}
+
+section {
+margin-bottom: 60px;
+}
+
+.timeline {
+padding-left: 24px;
+margin-left: 6px;
+}
+
+.timeline-item::before {
+left: -29px;
+}
+
+.contact-grid {
+grid-template-columns: repeat(2, 1fr);
+gap: 24px;
+}
+}
+
+@media (max-width: 1100px) {
+.language-switcher {
+position: absolute;
+top: 24px;
+right: 24px;
+opacity: 0.8;
+}
+
+.sticky-nav {
+display: none;
+}
+
+.container {
+padding: 60px 24px;
+}
+}
+
+/* Smooth scroll behavior */
+html {
+scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+background: var(--text);
+color: var(--bg);
+}
+
+/* Reading Progress Bar */
+.reading-progress {
+position: fixed;
+top: 0;
+left: 0;
+width: 0%;
+height: 3px;
+background: var(--text);
+z-index: 1000;
+transition: width 0.1s ease-out;
+}
+
+/* Reading Progress Bar */
+.reading-progress {
+position: fixed;
+top: 0;
+left: 0;
+width: 0%;
+height: 3px;
+background: var(--text);
+z-index: 1000;
+transition: width 0.1s ease-out;
+}
+
+/* Publication items styling */
+.publication-item {
+margin-bottom: 16px;
+padding-bottom: 0;
+border-bottom: 1px solid transparent;
+transition: border-color 0.3s ease, padding-bottom 0.3s ease, transform 0.2s ease;
+transform-origin: left center;
+cursor: default;
+}
+
+.publication-item:hover {
+transform: scale(1.02);
+}
+
+.publication-item:last-child {
+margin-bottom: 0;
+}
+
+.publication-item.expanded {
+padding-bottom: 24px;
+border-bottom-color: var(--divider-light);
+}
+
+.publication-item:last-child.expanded {
+border-bottom-color: transparent;
+}
+
+.publication-header {
+cursor: pointer;
+user-select: none;
+transition: opacity 0.2s ease;
+}
+
+.publication-header:hover {
+opacity: 0.8;
+}
+
+.publication-title {
+font-size: 18px;
+font-weight: 500;
+margin-bottom: 8px;
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.expand-icon {
+flex-shrink: 0;
+width: 20px;
+height: 20px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+font-size: 14px;
+opacity: 0.5;
+transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.publication-header:hover .expand-icon {
+opacity: 1;
+}
+
+.publication-item.expanded .expand-icon {
+transform: rotate(90deg);
+}
+
+.publication-meta {
+font-size: 15px;
+opacity: 0.6;
+margin-bottom: 4px;
+}
+
+.publication-details {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.4s ease, opacity 0.3s ease;
+opacity: 0;
+margin-top: 0;
+}
+
+.publication-item.expanded .publication-details {
+max-height: 2000px;
+opacity: 1;
+margin-top: 20px;
+}
+
+.detail-section {
+margin-bottom: 20px;
+}
+
+.detail-section:last-child {
+margin-bottom: 0;
+}
+
+.detail-label {
+font-family: 'IBM Plex Mono', monospace;
+font-size: 11px;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+opacity: 0.5;
+margin-bottom: 8px;
+}
+
+.detail-content {
+font-size: 17px;
+line-height: 1.6;
+}
+
+.supervisors {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.supervisor {
+font-size: 17px;
+}
+
+/* Project cards */
+.project-card {
+border: 1px solid var(--line);
+padding: 24px;
+margin-bottom: 24px;
+border-radius: 4px;
+transition: transform 0.2s ease, border-color 0.2s ease;
+transform-origin: left center;
+cursor: default;
+}
+
+.project-card:hover {
+transform: scale(1.02);
+border-color: var(--text);
+}
+
+.project-card:last-child {
+margin-bottom: 0;
+}
+
+.project-title {
+font-size: 19px;
+font-weight: 600;
+margin-bottom: 12px;
+line-height: 1.4;
+}
+
+.project-meta {
+font-family: 'IBM Plex Mono', monospace;
+font-size: 12px;
+opacity: 0.6;
+margin-bottom: 16px;
+}
+
+.project-description {
+font-size: 17px;
+line-height: 1.6;
+margin-bottom: 16px;
+}
+
+.project-link {
+font-size: 14px;
+}
+
+.project-link a {
+color: var(--text);
+text-decoration: none;
+position: relative;
+display: inline-block;
+}
+
+.project-link a::after {
+content: '';
+position: absolute;
+width: 0;
+height: 1px;
+bottom: -2px;
+left: 0;
+background-color: var(--text);
+transition: width 0.3s ease-out;
+}
+
+.project-link a:hover::after {
+width: 100%;
+}
+
+/* Teaching section */
+.teaching-item {
+margin-bottom: 20px;
+padding-bottom: 20px;
+border-bottom: 1px solid var(--divider-light);
+transition: transform 0.2s ease;
+transform-origin: left center;
+cursor: default;
+}
+
+.teaching-item:hover {
+transform: scale(1.02);
+}
+
+.teaching-item:last-child {
+border-bottom: none;
+margin-bottom: 0;
+padding-bottom: 0;
+}
+
+.teaching-code {
+font-family: 'IBM Plex Mono', monospace;
+font-size: 12px;
+opacity: 0.5;
+margin-bottom: 6px;
+}
+
+.teaching-title {
+font-size: 18px;
+font-weight: 500;
+margin-bottom: 4px;
+line-height: 1.4;
+}
+
+.teaching-meta {
+font-size: 16px;
+opacity: 0.6;
+}
+
+/* Social links */
+.social-links {
+display: flex;
+gap: 16px;
+margin-top: 8px;
+}
+
+.social-links a {
+color: var(--text);
+text-decoration: none;
+font-size: 14px;
+opacity: 0.6;
+transition: opacity 0.2s ease;
+border-bottom: 1px solid transparent;
+}
+
+.social-links a:hover {
+opacity: 1;
+border-bottom-color: var(--text);
+}
+
+/* BibTeX button */
+.bibtex-button {
+display: inline-block;
+margin-top: 8px;
+padding: 6px 12px;
+font-family: 'IBM Plex Mono', monospace;
+font-size: 11px;
+letter-spacing: 0.05em;
+text-transform: uppercase;
+border: 1px solid var(--line);
+background: transparent;
+color: var(--text);
+cursor: pointer;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.bibtex-button::before {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0;
+height: 0;
+border-radius: 50%;
+background: rgba(0, 0, 0, 0.1);
+transform: translate(-50%, -50%);
+transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+opacity: 0;
+}
+
+.bibtex-button:hover::before {
+width: 300px;
+height: 300px;
+opacity: 1;
+}
+
+.bibtex-button:hover {
+border-color: var(--text);
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bibtex-button:active {
+transform: translateY(0);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Niklas Berger</h1>
-        <div class="subtitle">
-            Research associate, <a href="https://zemki.uni-bremen.de/en/lab-digitale-kommunikation-und-informationsvielfalt/lab-digital-communication-and-information-diversity/" target="_blank" rel="noopener">DCID Lab</a> @ <a href="https://zemki.uni-bremen.de/en/" target="_blank" rel="noopener">ZeMKI</a>, <a href="https://uni-bremen.de/en/" target="_blank" rel="noopener">University of Bremen</a>
-        </div>
+<div class="reading-progress" id="reading-progress"></div>
+<div class="language-switcher">
+<div class="language-buttons">
+<button onclick="setLanguage('de')" id="lang-de" class="active">DE</button>
+<span class="separator">/</span>
+<button onclick="setLanguage('en')" id="lang-en">EN</button>
+</div>
+<nav class="sticky-nav">
+<a href="#about" data-lang-de="Über mich" data-lang-en="About">Über mich</a>
+<a href="#werdegang" data-lang-de="Vita" data-lang-en="CV">Vita</a>
+<a href="#projekte" data-lang-de="Projekte" data-lang-en="Projects">Projekte</a>
+<a href="#publikationen" data-lang-de="Publikationen" data-lang-en="Publications">Publikationen</a>
+<a href="#lehre" data-lang-de="Lehre" data-lang-en="Teaching">Lehre</a>
+<a href="#kontakt" data-lang-de="Kontakt" data-lang-en="Contact">Kontakt</a>
+</nav>
+</div>
+<div class="container">
+<header>
+    <h1>Niklas Joel Berger</h1>
+    <div class="subtitle">
+        <a href="https://zemki.uni-bremen.de/person/niklasberger/"
+           data-href-de="https://zemki.uni-bremen.de/person/niklasberger/"
+           data-href-en="https://zemki.uni-bremen.de/en/person/niklasberger/"
+           data-lang-de="Wissenschaftlicher Mitarbeiter"
+           data-lang-en="Research Associate"
+           target="_blank" rel="noopener">Wissenschaftlicher Mitarbeiter</a>,
 
-        <div class="message">
-            Website under construction. More information from early 2026.
-        </div>
+        <a href="https://zemki.uni-bremen.de/lab-digitale-kommunikation-und-informationsvielfalt/lab-digitale-kommunikation-und-informationsvielfalt/"
+           data-href-de="https://zemki.uni-bremen.de/lab-digitale-kommunikation-und-informationsvielfalt/lab-digitale-kommunikation-und-informationsvielfalt/"
+           data-href-en="https://zemki.uni-bremen.de/en/lab-digitale-kommunikation-und-informationsvielfalt/lab-digital-communication-and-information-diversity/"
+           target="_blank" rel="noopener">DCID Lab</a>
 
-        <div class="contact">
-            <div class="contact-item">
-                <div class="contact-label">Email</div>
-                <div class="contact-value">
-                    <a href="#" id="email-link">
-                        <span id="email-display"></span>
-                    </a>
-                </div>
-            </div>
+        @
 
-            <div class="contact-item">
-                <div class="contact-label">ORCID</div>
-                <div class="contact-value">
-                    <a href="https://orcid.org/0009-0001-2173-0091" target="_blank" rel="noopener">0009-0001-2173-0091</a>
-                </div>
-            </div>
-        </div>
+        <a href="https://zemki.uni-bremen.de/"
+           data-href-de="https://zemki.uni-bremen.de/"
+           data-href-en="https://zemki.uni-bremen.de/en/"
+           target="_blank" rel="noopener">ZeMKI</a>,
 
-        <footer>
-            © 2025 Niklas Berger
-        </footer>
+        <a href="https://www.uni-bremen.de/"
+           data-href-de="https://www.uni-bremen.de/"
+           data-href-en="https://www.uni-bremen.de/en/"
+           data-lang-de="Universität Bremen"
+           data-lang-en="University of Bremen"
+           target="_blank" rel="noopener">Universität Bremen</a>
     </div>
+</header>
 
-    <script>
-        // Email Spam Protection
-        document.addEventListener('DOMContentLoaded', () => {
-            initEmailProtection();
-        });
+<section id="about">
+<h2 data-lang-de="Über mich" data-lang-en="About me">Über mich</h2>
+<div class="bio" data-lang-de="Ich bin wissenschaftlicher Mitarbeiter und Doktorand am Lab für Digitale Kommunikation und Informationsvielfalt (DCID) des ZeMKI an der Universität Bremen. Meine Forschung verbindet Politikwissenschaft und insbesondere Demokratietheorie mit empirischen Analysen von Medien und Kommunikation im digitalen Raum." data-lang-en="I am a research assistant and doctoral candidate at the Lab for Digital Communication and Information Diversity (DCID) at ZeMKI at the University of Bremen. My research combines political science, particularly democratic theory, with empirical analyses of media and communication in the digital space.">
+Ich bin wissenschaftlicher Mitarbeiter und Doktorand am Lab für Digitale Kommunikation und Informationsvielfalt (DCID) des ZeMKI an der Universität Bremen. Meine Forschung verbindet Politikwissenschaft und insbesondere Demokratietheorie mit empirischen Analysen von Medien und Kommunikation im digitalen Raum.
+    </div>
+<div class="bio" data-lang-de="In meiner Masterarbeit 'The Platform Economy and Deliberation in the Digital Public Sphere' habe ich mich mit den demokratietheoretischen Implikationen digitaler Kommunikationsplattformen beschäftigt. Meine Forschungsinteressen umfassen digitale Öffentlichkeiten und die kommunikativen Bedingungen von Demokratien." data-lang-en="In my master's thesis, 'The Platform Economy and Deliberation in the Digital Public Sphere,' I examined the implications of digital communication platforms for democratic theory. My research interests include digital publics and the communicative conditions of democracies.">
+In meiner Masterarbeit 'The Platform Economy and Deliberation in the Digital Public Sphere' habe ich mich mit den demokratietheoretischen Implikationen digitaler Kommunikationsplattformen beschäftigt. Meine Forschungsinteressen umfassen digitale Öffentlichkeiten und die kommunikativen Bedingungen von Demokratien.
+    </div>
+</section>
 
-        function initEmailProtection() {
-            // Email address
-            const user = 'berger';
-            const domain = 'uni-bremen.de';
-            
-            const email = user + '@' + domain;
-            const emailLink = document.getElementById('email-link');
-            const emailDisplay = document.getElementById('email-display');
-            
-            // Setze mailto Link
-            emailLink.href = 'mailto:' + email;
-            
-            // Zeige E-Mail rückwärts im HTML (CSS dreht es wieder um)
-            emailDisplay.textContent = email.split('').reverse().join('');
-            emailDisplay.className = 'email-protected';
+<section id="werdegang">
+<h2 data-lang-de="Vita" data-lang-en="CV">Vita</h2>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year" data-lang-de="seit 2026" data-lang-en="since 2026">seit 2026</div>
+<div class="timeline-title" data-lang-de="Wissenschaftlicher Mitarbeiter & Doktorand" data-lang-en="Research Associate & PhD Candidate">Wissenschaftlicher Mitarbeiter & Doktorand</div>
+<div class="timeline-institution"><a href="https://zemki.uni-bremen.de/person/niklasberger/"
+   data-href-de="https://zemki.uni-bremen.de/person/niklasberger/"
+   data-href-en="https://zemki.uni-bremen.de/en/person/niklasberger/"
+   target="_blank" rel="noopener">DCID Lab, ZeMKI, Universität Bremen</a></div>
+<div class="timeline-description" data-lang-de="Forschung zu digitalen Öffentlichkeiten, Plattformökonomie und deliberativer Demokratie in digitalen Kommunikationsräumen." data-lang-en="Research on digital public spheres, platform economy, and deliberative democracy in digital communication spaces.">
+Forschung zu digitalen Öffentlichkeiten, Plattformökonomie und deliberativer Demokratie in digitalen Kommunikationsräumen.
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">2023 – 2025</div>
+<div class="timeline-title" data-lang-de="Master of Arts Politikwissenschaft" data-lang-en="Master of Arts Political Science">Master of Arts Politikwissenschaft</div>
+<div class="timeline-institution" data-lang-de="Universität Hamburg & Universität Oslo" data-lang-en="University of Hamburg & University of Oslo">Universität Hamburg & Universität Oslo</div>
+<div class="timeline-description" data-lang-de="Schwerpunkt: Internationale politische Theorie. Masterarbeit: 'The Platform Economy and Deliberation in the Digital Public Sphere'." data-lang-en="Focus: International political theory. Master's thesis: 'The Platform Economy and Deliberation in the Digital Public Sphere'.">
+Schwerpunkt: Internationale politische Theorie. Masterarbeit: "The Platform Economy and Deliberation in the Digital Public Sphere".
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">2022 – 2025</div>
+<div class="timeline-title" data-lang-de="Studentische Hilfskraft" data-lang-en="Student Research Assistant">Studentische Hilfskraft</div>
+<div class="timeline-institution">ZeMKI, Universität Bremen</div>
+<div class="timeline-description" data-lang-de="Forschungsunterstützung am ZeMKI, u.a. im Lab für Digitale Kommunikation und Informationsvielfalt bei Prof. Dr. Cornelius Puschmann & bei molo.news und Krosse bei Andrea Grahl." data-lang-en="Research support at ZeMKI, including in the Lab for Digital Communication and Information Diversity with Prof. Dr. Cornelius Puschmann & at molo.news and Krosse with Andrea Grahl.">
+Forschungsunterstützung am ZeMKI, u.a. im Lab für Digitale Kommunikation und Informationsvielfalt bei Prof. Dr. Cornelius Puschmann & bei molo.news und Krosse bei Andrea Grahl.
+    </div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year" data-lang-de="seit 2022" data-lang-en="since 2022">seit 2022</div>
+<div class="timeline-title" data-lang-de="Journalistische Tätigkeit" data-lang-en="Journalism">Journalistische Tätigkeit</div>
+<div class="timeline-institution">
+<a href="https://taz.de/Niklas-Berger/!a68942/" target="_blank" rel="noopener">
+<span data-lang-de="taz nord" data-lang-en="taz nord">taz nord</span>
+</a>
+<span data-lang-de=", Radio Bremen u.a." data-lang-en=", Radio Bremen, among others">, Radio Bremen u.a.</span>
+</div>
+<div class="timeline-description" data-lang-de="Freier Autor für taz nord sowie studentischer Redakteur bei Radio Bremen mit Mitarbeit an FUNK Formaten (u.a. Y-Kollektiv) und ARD Mediathek." data-lang-en="Freelance author for taz nord and student editor at Radio Bremen, working on FUNK formats (e.g., Y-Kollektiv) and ARD Mediathek.">
+Freier Autor für taz nord sowie studentischer Redakteur bei Radio Bremen mit Mitarbeit an FUNK Formaten (u.a. Y-Kollektiv) und ARD Mediathek.
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-year">2020 – 2023</div>
+<div class="timeline-title" data-lang-de="Bachelor of Arts Kommunikations- und Medienwissenschaften & Politikwissenschaft" data-lang-en="Bachelor of Arts Communication and Media Studies & Political Science">Bachelor of Arts Kommunikations- und Medienwissenschaften & Politikwissenschaft</div>
+<div class="timeline-institution" data-lang-de="Universität Bremen" data-lang-en="University of Bremen">Universität Bremen</div>
+<div class="timeline-description" data-lang-de="Bachelorarbeit: 'Postkoloniale Ansätze in der Kommunikations- und Medienwissenschaft. Eine kritische Analyse kommunikations- und medienwissenschaftlicher Theorie aus postkolonialer Perspektive'." data-lang-en="Bachelor's thesis: 'Postcolonial Approaches in Communication and Media Studies. A Critical Analysis of Communication and Media Theory from a Postcolonial Perspective'.">
+Bachelorarbeit: "Postkoloniale Ansätze in der Kommunikations- und Medienwissenschaft. Eine kritische Analyse kommunikations- und medienwissenschaftlicher Theorie aus postkolonialer Perspektive".
+</div>
+</div>
+</div>
+</section>
+
+<section id="projekte">
+<h2 data-lang-de="Forschungsprojekte" data-lang-en="Research Projects">Forschungsprojekte</h2>
+
+<div class="project-card">
+<div class="project-title" data-lang-de="INDI – Informiert durch Influencer" data-lang-en="INDI – Informed by Influencers">INDI – Informiert durch Influencer</div>
+<div class="project-meta" data-lang-de="Laufzeit: 2024-2027 | Förderung: BMFTR | Leitung: Prof. Dr. Cornelius Puschmann" data-lang-en="Duration: 2024-2027 | Funding: BMFTR | PI: Prof. Dr. Cornelius Puschmann">Laufzeit: 2024-2027 | Förderung: BMFTR | Leitung: Prof. Dr. Cornelius Puschmann</div>
+<div class="project-description" data-lang-de="Das Projekt untersucht, wie klimawandelrelevantes Wissen auf sozialen Netzwerken verbreitet und konsumiert wird. Ziel ist es, den Anteil von Social-Media-Beiträgen zu diesem Thema zu bestimmen sowie das Verhalten der Nutzer*innen zu untersuchen. Mittels innovativer Methoden wie mobilem Tracking, Experience Sampling und automatisierter Audio-/Videoanalyse wird erforscht, inwieweit Social-Media-Beiträge zum Klimawandel die Informiertheit der Betrachter*innen erhöhen." data-lang-en="The project focuses on the way in which knowledge relevant to climate change is disseminated and consumed on social networks. The aim is to determine the proportion of social media posts on this topic and to examine user behavior. Using innovative methods such as mobile tracking, Experience Sampling Method (ESM), and automated audio/video analysis, the research explores the extent to which social media posts on climate change increase viewers' level of information.">
+Das Projekt untersucht, wie klimawandelrelevantes Wissen auf sozialen Netzwerken verbreitet und konsumiert wird. Ziel ist es, den Anteil von Social-Media-Beiträgen zu diesem Thema zu bestimmen sowie das Verhalten der Nutzer*innen zu untersuchen. Mittels innovativer Methoden wie mobilem Tracking, Experience Sampling und automatisierter Audio-/Videoanalyse wird erforscht, inwieweit Social-Media-Beiträge zum Klimawandel die Informiertheit der Betrachter*innen erhöhen.
+</div>
+<div class="project-link">
+<a href="https://zemki.uni-bremen.de/forschungsprojekt/indi/" id="project-link-indi" target="_blank" rel="noopener" data-lang-de="→ Zur Projektseite" data-lang-en="→ Project website">→ Zur Projektseite</a>
+</div>
+</div>
+</section>
+
+<section id="publikationen">
+<h2 data-lang-de="Publikationen" data-lang-en="Publications">Publikationen</h2>
+<div class="publications-list" id="publications-container">
+<div class="loading" data-lang-de="Publikationen werden geladen..." data-lang-en="Loading publications...">Publikationen werden geladen...</div>
+</div>
+</section>
+
+<section id="lehre">
+<h2 data-lang-de="Lehre" data-lang-en="Teaching">Lehre</h2>
+
+<div class="teaching-item">
+<div class="teaching-code">09-60-KMW-GSa-1</div>
+<div class="teaching-title" data-lang-de="Propädeutik 1 Argumentieren und Präsentieren: Seminar 1" data-lang-en="Propaedeutics 1 Argumentation and Presentation: Seminar 1">Propädeutik 1 Argumentieren und Präsentieren: Seminar 1</div>
+<div class="teaching-meta" data-lang-de="Seminar | SoSe 2026 | Di 10:00-12:00" data-lang-en="Seminar | Summer 2026 | Tue 10:00-12:00">Seminar | SoSe 2026 | Di 10:00-12:00</div>
+</div>
+
+<div class="teaching-item">
+<div class="teaching-code">09-60-KMW9-2</div>
+<div class="teaching-title" data-lang-de="Quantitatives Forschungsprojekt Automatisierte Inhaltsanalyse (Teil 2)" data-lang-en="Quantitative Research Project Automated Content Analysis (Part 2)">Quantitatives Forschungsprojekt Automatisierte Inhaltsanalyse (Teil 2)</div>
+<div class="teaching-meta" data-lang-de="Seminar | SoSe 2026 | Di 14:00-16:00" data-lang-en="Seminar | Summer 2026 | Tue 14:00-16:00">Seminar | SoSe 2026 | Di 14:00-16:00</div>
+</div>
+</section>
+
+<section id="kontakt">
+<h2 data-lang-de="Kontakt" data-lang-en="Contact">Kontakt</h2>
+<div class="contact-grid">
+<div class="contact-item">
+<div class="contact-label" data-lang-de="E-Mail" data-lang-en="Email">E-Mail</div>
+<div class="contact-value">
+<a href="#" id="email-link">
+<span id="email-display"></span>
+</a>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-label">LinkedIn</div>
+<div class="contact-value">
+<a href="https://www.linkedin.com/in/niklas-berger-1b65531b3/" target="_blank" rel="noopener">Niklas Berger</a>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-label">Bluesky</div>
+<div class="contact-value">
+<a href="https://bsky.app/profile/niklasberger.bsky.social" target="_blank" rel="noopener">@niklasberger</a>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-label">ORCID</div>
+<div class="contact-value">
+<a href="https://orcid.org/0009-0001-2173-0091" target="_blank" rel="noopener" id="orcid-link">0009-0001-2173-0091</a>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-label" data-lang-de="Institution" data-lang-en="Institution">Institution</div>
+<div class="contact-value">
+<a href="https://zemki.uni-bremen.de/person/niklasberger/"
+   data-href-de="https://zemki.uni-bremen.de/person/niklasberger/"
+   data-href-en="https://zemki.uni-bremen.de/en/person/niklasberger/"
+   target="_blank" rel="noopener">ZeMKI, Universität Bremen</a>
+</div>
+</div>
+<div class="contact-item">
+<div class="contact-label" data-lang-de="Sprechstunde" data-lang-en="Office Hours">Sprechstunde</div>
+<div class="contact-value">
+<a href="https://cal.com/niklasberger/sprechstunde" target="_blank" rel="noopener" data-lang-de="Mi 14:30-15:30" data-lang-en="Wed 14:30-15:30">Mi 14:30-15:30</a>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+© <span id="current-year"></span> Niklas Joel Berger
+</footer>
+</div>
+
+<script>
+// Language Management
+let currentLang = 'de';
+
+function setLanguage(lang) {
+    currentLang = lang;
+
+    document.getElementById('lang-de').classList.toggle('active', lang === 'de');
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+
+    const elements = document.querySelectorAll('[data-lang-de], [data-lang-en]');
+    elements.forEach(el => {
+        const text = el.getAttribute(`data-lang-${lang}`);
+        if (text) {
+            el.textContent = text;
         }
-    </script>
+    });
+
+    const linkElements = document.querySelectorAll('[data-href-de], [data-href-en]');
+    linkElements.forEach(el => {
+        const url = el.getAttribute(`data-href-${lang}`);
+        if (url) {
+            el.href = url;
+        }
+    });
+
+    document.title = lang === 'de'
+        ? 'Niklas Joel Berger – Wissenschaftlicher Mitarbeiter & Doktorand'
+        : 'Niklas Joel Berger – Research Associate & PhD Candidate';
+
+    const projectLink = document.getElementById('project-link-indi');
+    if (projectLink) {
+        projectLink.href = lang === 'de'
+            ? 'https://zemki.uni-bremen.de/forschungsprojekt/indi/'
+            : 'https://zemki.uni-bremen.de/en/forschungsprojekt/indi-en/';
+    }
+
+    localStorage.setItem('preferredLanguage', lang);
+}
+
+// Load saved language preference on page load
+document.addEventListener('DOMContentLoaded', () => {
+const savedLang = localStorage.getItem('preferredLanguage');
+
+// If no saved preference, detect browser language
+if (savedLang) {
+if (savedLang !== 'de') {
+setLanguage(savedLang);
+}
+} else {
+// Check browser language - use English for non-German browsers
+const browserLang = navigator.language || navigator.userLanguage;
+if (!browserLang.startsWith('de')) {
+setLanguage('en');
+}
+}
+
+// Initialize email protection
+initEmailProtection();
+
+// Load publications from ORCID
+loadAllPublications();
+
+// Set current year in footer
+document.getElementById('current-year').textContent = new Date().getFullYear();
+
+// Scroll spy for navigation
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.sticky-nav a');
+
+function highlightNav() {
+let currentSection = '';
+
+sections.forEach(section => {
+const sectionTop = section.offsetTop;
+const sectionHeight = section.clientHeight;
+if (window.pageYOffset >= sectionTop - 200) {
+currentSection = section.getAttribute('id');
+}
+});
+
+navLinks.forEach(link => {
+link.classList.remove('active');
+if (link.getAttribute('href') === `#${currentSection}`) {
+link.classList.add('active');
+}
+});
+}
+
+// Reading progress bar
+function updateReadingProgress() {
+const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled = (winScroll / height) * 100;
+document.getElementById('reading-progress').style.width = scrolled + '%';
+}
+
+window.addEventListener('scroll', () => {
+highlightNav();
+updateReadingProgress();
+});
+
+highlightNav(); // Initial call
+updateReadingProgress(); // Initial call
+});
+
+// Email Spam Protection - Simple obfuscation
+function initEmailProtection() {
+// Email address components (obfuscated in source)
+const user = 'berger';
+const domain = 'uni-bremen.de';
+
+const email = user + '@' + domain;
+const emailLink = document.getElementById('email-link');
+const emailDisplay = document.getElementById('email-display');
+
+// Set mailto link
+emailLink.href = 'mailto:' + email;
+
+// Display email normally (obfuscation happens in JS, not display)
+emailDisplay.textContent = email;
+}
+
+// ORCID ID
+const ORCID_ID = '0009-0001-2173-0091';
+
+// Aktualisiere den ORCID Link
+document.getElementById('orcid-link').href = `https://orcid.org/${ORCID_ID}`;
+document.getElementById('orcid-link').textContent = ORCID_ID;
+
+// Load publications from ORCID
+async function loadAllPublications() {
+const container = document.getElementById('publications-container');
+let publications = [];
+
+try {
+// Fetch work summaries from ORCID Public API
+const response = await fetch(`https://pub.orcid.org/v3.0/${ORCID_ID}/works`, {
+headers: {
+'Accept': 'application/json'
+}
+});
+
+if (response.ok) {
+const data = await response.json();
+
+// Check if there are publications
+if (data.group && data.group.length > 0) {
+// Fetch detailed info for each work to get contributors
+const workPromises = data.group.map(async (workGroup) => {
+const workSummary = workGroup['work-summary'][0];
+const putCode = workSummary['put-code'];
+
+// Fetch full work details including contributors
+try {
+const detailResponse = await fetch(`https://pub.orcid.org/v3.0/${ORCID_ID}/work/${putCode}`, {
+headers: {
+'Accept': 'application/json'
+}
+});
+
+if (detailResponse.ok) {
+const workDetail = await detailResponse.json();
+
+const title = workDetail.title?.title?.value || 'Untitled';
+const year = workDetail['publication-date']?.year?.value || 0;
+const journal = workDetail['journal-title']?.value || '';
+
+// Extract DOI if available
+let doi = '';
+if (workDetail['external-ids']?.['external-id']) {
+const doiEntry = workDetail['external-ids']['external-id'].find(id => id['external-id-type'] === 'doi');
+if (doiEntry) {
+doi = doiEntry['external-id-value'];
+}
+}
+
+// Extract contributors with roles
+let contributors = [];
+if (workDetail.contributors?.contributor) {
+contributors = workDetail.contributors.contributor.map(c => {
+const name = c['credit-name']?.value || '';
+let role = c['contributor-attributes']?.['contributor-role'] || '';
+// Extract role name from URL if it's a URL
+if (role.includes('/')) {
+role = role.split('/').filter(p => p).pop() || '';
+}
+return { name, role };
+}).filter(c => c.name);
+}
+
+return {
+title: title,
+year: parseInt(year) || 0,
+venue: journal,
+doi: doi,
+contributors: contributors,
+putCode: putCode
+};
+}
+} catch (err) {
+console.log('Error fetching work details:', err);
+}
+
+// Fallback to summary data if detail fetch fails
+return {
+title: workSummary.title?.title?.value || 'Untitled',
+year: parseInt(workSummary['publication-date']?.year?.value) || 0,
+venue: workSummary['journal-title']?.value || '',
+doi: '',
+contributors: [],
+putCode: putCode
+};
+});
+
+publications = await Promise.all(workPromises);
+}
+}
+} catch (error) {
+console.log('ORCID API not available:', error);
+container.innerHTML = '<div class="publication-placeholder" data-lang-de="Publikationen konnten nicht geladen werden." data-lang-en="Could not load publications.">Publikationen konnten nicht geladen werden.</div>';
+return;
+}
+
+// Sort by year (newest first)
+publications.sort((a, b) => b.year - a.year);
+
+// Render publications
+if (publications.length === 0) {
+container.innerHTML = '<div class="publication-placeholder" data-lang-de="Keine Publikationen gefunden." data-lang-en="No publications found.">Keine Publikationen gefunden.</div>';
+} else {
+let html = '';
+publications.forEach(pub => {
+// Format contributors with roles
+let authorsHtml = '';
+if (pub.contributors && pub.contributors.length > 0) {
+const authorList = pub.contributors.map(c => {
+if (c.role) {
+// Format role nicely
+const roleFormatted = c.role.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+return `${c.name} <span class="contributor-role">(${roleFormatted})</span>`;
+}
+return c.name;
+}).join(', ');
+authorsHtml = `<div class="publication-authors">${authorList}</div>`;
+}
+
+const doiHtml = pub.doi ? `<div class="publication-doi"><a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener">DOI: ${pub.doi}</a></div>` : '';
+const orcidUrl = `https://orcid.org/${ORCID_ID}`;
+const publicationUrl = pub.doi
+  ? `https://doi.org/${pub.doi}`
+  : `https://orcid.org/${ORCID_ID}`;
+
+html += `
+<div class="publication-item">
+  ${authorsHtml}
+  <div class="publication-title">
+    <a href="${publicationUrl}" target="_blank" rel="noopener">
+      ${pub.title}
+    </a>
+  </div>
+  ${pub.venue ? `<div class="publication-venue">${pub.venue}</div>` : ''}
+  ${pub.year ? `<div class="publication-year">${pub.year}</div>` : ''}
+  ${doiHtml}
+</div>
+`;
+});
+container.innerHTML = html;
+}
+}
+</script>
 </body>
 </html>
