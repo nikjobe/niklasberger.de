@@ -26,30 +26,6 @@
 <style>
 /* Local Font Declarations */
 @font-face {
-font-family: 'IBM Plex Mono';
-src: url('fonts/IBMPlexMono-Light.ttf') format('truetype');
-font-weight: 300;
-font-style: normal;
-font-display: swap;
-}
-
-@font-face {
-font-family: 'IBM Plex Mono';
-src: url('fonts/IBMPlexMono-Regular.ttf') format('truetype');
-font-weight: 400;
-font-style: normal;
-font-display: swap;
-}
-
-@font-face {
-font-family: 'IBM Plex Mono';
-src: url('fonts/IBMPlexMono-SemiBold.ttf') format('truetype');
-font-weight: 600;
-font-style: normal;
-font-display: swap;
-}
-
-@font-face {
 font-family: 'Bitcount Single';
 src: url('fonts/BitcountSingle-Light.ttf') format('truetype');
 font-weight: 300;
@@ -68,6 +44,30 @@ font-display: swap;
 @font-face {
 font-family: 'Bitcount Single';
 src: url('fonts/BitcountSingle-SemiBold.ttf') format('truetype');
+font-weight: 600;
+font-style: normal;
+font-display: swap;
+}
+
+@font-face {
+font-family: 'Crimson Pro';
+src: url('fonts/CrimsonPro-Light.ttf') format('truetype');
+font-weight: 300;
+font-style: normal;
+font-display: swap;
+}
+
+@font-face {
+font-family: 'Crimson Pro';
+src: url('fonts/CrimsonPro-Regular.ttf') format('truetype');
+font-weight: 400;
+font-style: normal;
+font-display: swap;
+}
+
+@font-face {
+font-family: 'Crimson Pro';
+src: url('fonts/CrimsonPro-SemiBold.ttf') format('truetype');
 font-weight: 600;
 font-style: normal;
 font-display: swap;
@@ -100,7 +100,7 @@ box-sizing: border-box;
 body {
 background: var(--bg);
 color: var(--text);
-font-family: 'Bitcount Single', monospace;
+font-family: 'Crimson Pro', serif;
 font-size: 18px;
 line-height: 1.6;
 font-weight: 300;
@@ -109,7 +109,7 @@ font-weight: 300;
 
 /* Monospace font for headers */
 h1, h2, .subtitle, .timeline-year, .publication-year, .contact-label, footer, .language-switcher {
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 }
 
 .container {
@@ -133,7 +133,7 @@ right: 40px;
 display: flex;
 flex-direction: column;
 gap: 12px;
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 12px;
 letter-spacing: 0.05em;
 opacity: 0;
@@ -202,7 +202,7 @@ border-top: 1px solid var(--line);
 }
 
 .sticky-nav a {
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 11px;
 letter-spacing: 0.05em;
 text-transform: uppercase;
@@ -261,7 +261,7 @@ opacity: 0;
 }
 
 h1 {
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 32px;
 font-weight: 600;
 letter-spacing: -0.02em;
@@ -270,7 +270,7 @@ line-height: 1.2;
 }
 
 .subtitle {
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 14px;
 font-weight: 300;
 letter-spacing: 0.05em;
@@ -321,7 +321,7 @@ opacity: 0;
 }
 
 h2 {
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 12px;
 font-weight: 400;
 letter-spacing: 0.1em;
@@ -371,7 +371,7 @@ transform: scale(1.2);
 }
 
 .timeline-year {
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 13px;
 font-weight: 400;
 margin-bottom: 8px;
@@ -472,7 +472,7 @@ opacity: 0.6;
 }
 
 .publication-year {
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 13px;
 margin-top: 4px;
 opacity: 0.5;
@@ -536,7 +536,7 @@ gap: 8px;
 }
 
 .contact-label {
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 11px;
 letter-spacing: 0.1em;
 text-transform: uppercase;
@@ -580,7 +580,7 @@ padding-top: 20px;
 border-top: 1px solid var(--line);
 text-align: center;
 opacity: 0.4;
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 12px;
 }
 
@@ -781,7 +781,7 @@ margin-bottom: 0;
 }
 
 .detail-label {
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 11px;
 letter-spacing: 0.1em;
 text-transform: uppercase;
@@ -832,7 +832,7 @@ line-height: 1.4;
 }
 
 .project-meta {
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 12px;
 opacity: 0.6;
 margin-bottom: 16px;
@@ -891,7 +891,7 @@ padding-bottom: 0;
 }
 
 .teaching-code {
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 12px;
 opacity: 0.5;
 margin-bottom: 6px;
@@ -935,7 +935,7 @@ border-bottom-color: var(--text);
 display: inline-block;
 margin-top: 8px;
 padding: 6px 12px;
-font-family: 'IBM Plex Mono', monospace;
+font-family: 'Bitcount Single', monospace;
 font-size: 11px;
 letter-spacing: 0.05em;
 text-transform: uppercase;
